@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        const form = document.getElementById('login-form');
+        let randomNum;
+        let code;
+        let username;
+
+        function log() {
+            const username = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (!username || !password) {
+                alert('Please enter both username and password.');
+                return;
+            }
+
+            if (password.length != 5) {
+                alert('Password code must be 5 numbers long.');
+                return;
+            }
+
+            if(password == code){
+                alert("Login Successful");
+                return;
+            }
+            else{
+                alert("Incorrect code, please try again.");
+            }
+        }
+
+        function sendEmail() {
+            const randomNum = Math.floor(Math.random() * 90000) + 10000;
+            code = randomNum
+            const username = document.getElementById('email').value;
+
+            Email.send({
+                SecureToken: "6eea7dd2-6155-4f32-a9f7-bc78ba871c55",
+                To: username,
+                From: "arjay.nino09477@gmail.com",
+                Subject: "Entrep Project - C Tutorial",
+                Body: "The verification code is " + randomNum
+            }).then(
+                message => alert("The code is sent successfully! Please check your spam folder")
+            );
+
+            document.getElementById("labelpass").style.display = "block";
+            document.getElementById("password").style.display = "block";
+            document.getElementById("loginbutton").style.display = "block";
+            document.getElementById("sendemail").style.display = "none";
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>C Tutorial Lmao</h1>
+    <form id="login-form">
+        <label for="email">Username:</label>
+        <input id="email" type="email" name="email" required>
+        <label style="display: none" id="labelpass" for="pass">Password:</label>
+        <input style="display: none" id="password" type="password" name="password" minlength="5" maxlength="5" required>
+        <button style="display: none" id="loginbutton" onclick="log()">Log In</button>
+        <button id="sendemail" onclick="sendEmail()">Send Code</button>
+    </form>
+    <p id="code"></p>
+</body>
+</html>
