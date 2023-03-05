@@ -37,7 +37,7 @@ signup.addEventListener('click', (e) => {
         email: email
       })
       alert("User Info has been created!");
-      window.location.replace("loginFIREBASE.html");
+      window.location.replace("login.html");
       // ...
     })
     .catch((error) => {

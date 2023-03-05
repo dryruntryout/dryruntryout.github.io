@@ -35,7 +35,7 @@ onAuthStateChanged(auth, (user) => {
     
     // ...
   } else {
-    window.location.replace("loginFIREBASE.html");
+    window.location.replace("login.html");
   }
 });
 
