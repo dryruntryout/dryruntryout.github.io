@@ -35,7 +35,8 @@ signup.addEventListener('click', (e) => {
 
       set(ref(database, 'users/' + user.uid), {
         username: username,
-        email: email
+        email: email,
+        level: 1
       })
       alert("User Info has been created!");
       setTimeout(function() {
