@@ -22,27 +22,19 @@ const database = getDatabase(app);
 const auth = getAuth();
 
 const user = auth.currentUser;
-initiate();
-function initiate() {
-    if (auth == null) {
-        window.location.replace("loginFIREBASE.html");
+const displayName = user.displayName
+
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+    document.getElementById("usergreet").innerHTML = "Welcome " + displayName;
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      const uid = user.uid;
+      // ...
+    } else {
+      window.location.replace("loginFIREBASE.html");
     }
-    else {
-        document.getElementById("usergreet").innerHTML = "Welcome, " + user.displayName;
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                alert("User Signed In");
-                // User is signed in, see docs for a list of available properties
-                // https://firebase.google.com/docs/reference/js/firebase.User
-                const uid = user.uid;
-                // ...
-            } else {
-                // User is signed out
-                // ...
-            }
-        });
-    }
-}
+  });
 
 logout.addEventListener('click', (e) => {
 
