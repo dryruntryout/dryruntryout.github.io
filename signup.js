@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
+import { getDatabase, set, ref, onValue } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
 import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -38,9 +38,23 @@ signup.addEventListener('click', (e) => {
         email: email,
         level: 1
       })
+
+      const usernameRef = ref(database, 'users/' + user.uid + '/username');
+      onValue(usernameRef, (snapshot) => {
+        const data = snapshot.val();
+        do {
+          onValue(usernameRef, (snapshot) => {
+            if (data != null) {
+              window.location.replace("login.html");
+            }
+          });
+        } while (data == null);  
+
+      });
+      
       alert("User Info has been created!");
-      setTimeout(function() {
-        window.location.replace("login.html");
+      setTimeout(function () {
+
       }, 1000);
       // ...
     })
