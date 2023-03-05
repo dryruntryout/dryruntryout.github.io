@@ -49,9 +49,7 @@ login.addEventListener('click', (e) => {
 });
 
 signOut(auth).then(() => {
-    alert("Sign Out Successfully");
     // Sign-out successful.
 }).catch((error) => {
-    alert("Error, Please try again");
     // An error happened.
 });
