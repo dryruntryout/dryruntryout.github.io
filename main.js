@@ -24,7 +24,7 @@ const auth = getAuth();
 const user = auth.currentUser;
 initiate();
 function initiate() {
-    if (user == null) {
+    if (auth == null) {
         window.location.replace("loginFIREBASE.html");
     }
     else {
@@ -46,7 +46,6 @@ function initiate() {
 
 logout.addEventListener('click', (e) => {
 
-    const auth = getAuth();
     signOut(auth).then(() => {
         alert("Sign Out Successfully!");
         // Sign-out successful.
