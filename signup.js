@@ -37,6 +37,7 @@ signup.addEventListener('click', (e) => {
         email: email
       })
       alert("User Info has been created!");
+      signup.reset();
       // ...
     })
     .catch((error) => {
