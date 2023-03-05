@@ -7,13 +7,14 @@ import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDMEG6AYXdzY_ofi2Xid4hHGcdV9kHu4nM",
-  authDomain: "entrep-101.firebaseapp.com",
-  databaseURL: "https://entrep-101-default-rtdb.firebaseio.com",
-  projectId: "entrep-101",
-  storageBucket: "entrep-101.appspot.com",
-  messagingSenderId: "550757236624",
-  appId: "1:550757236624:web:1e2e89ee127c583cb7bd15"
+  apiKey: "AIzaSyA8R0mRmt4R4SknJ9WHior8QukvH4JRcWk",
+  authDomain: "entrep-101-test.firebaseapp.com",
+  databaseURL: "https://entrep-101-test-default-rtdb.firebaseio.com",
+  projectId: "entrep-101-test",
+  storageBucket: "entrep-101-test.appspot.com",
+  messagingSenderId: "1042607918270",
+  appId: "1:1042607918270:web:d310c8614354cd866562ef",
+  measurementId: "G-G43ZGKCQ3X"
 };
 
 // Initialize Firebase
@@ -37,7 +38,9 @@ signup.addEventListener('click', (e) => {
         email: email
       })
       alert("User Info has been created!");
-      window.location.replace("login.html");
+      setTimeout(function() {
+        window.location.replace("login.html");
+      }, 1000);
       // ...
     })
     .catch((error) => {
