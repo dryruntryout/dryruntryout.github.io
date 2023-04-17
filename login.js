@@ -38,7 +38,7 @@ login.addEventListener('click', (e) => {
             })
 
             alert("Log In Successfully!");
-            window.location.replace("index.html");
+            window.location.replace("dashboard.html");
             // ...
         })
         .catch((error) => {
